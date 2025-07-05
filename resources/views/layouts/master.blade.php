@@ -47,6 +47,7 @@
 
     @yield('content')
 
+
     <div class="site-footer">
         @include('layouts.footer')
     </div>
