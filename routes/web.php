@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\TestingController;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\Event\Code\Test;
@@ -8,6 +9,8 @@ use PHPUnit\Event\Code\Test;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::resource('produk', ProdukController::class);
 
 
 Route::get('/home', [HomeController::class, 'home']);
