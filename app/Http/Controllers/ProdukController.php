@@ -13,8 +13,10 @@ class ProdukController extends Controller
     public function index()
     {
         return view('admin.produk.list', [
-            'produk' => Produk::orderBy('id', 'desc')->get()
+            'produk' => Produk::orderBy('id', 'desc')->paginate(3)
         ]);
+
+        // select * from produk;
     }
 
     /**
@@ -32,8 +34,9 @@ class ProdukController extends Controller
     {
         // dd($request->all());
         Produk::create($request->all());
+        // insert into produk (id, ns) values (null, $request->ns);
 
-        return redirect()->route('produk.index');
+        return redirect('/produk')->with('success', 'Produk berhasil ditambahkan');
     }
 
     /**
@@ -41,7 +44,9 @@ class ProdukController extends Controller
      */
     public function show(Produk $produk)
     {
-        //
+        return view('admin.produk.detail', [
+            'produk' => $produk
+        ]);
     }
 
     /**
@@ -61,7 +66,7 @@ class ProdukController extends Controller
     {
         $produk->update($request->all());
 
-        return redirect()->route('produk.index');
+        return redirect('/produk');
     }
 
     /**
@@ -70,6 +75,6 @@ class ProdukController extends Controller
     public function destroy(Produk $produk)
     {
         $produk->delete();
-        return redirect()->route('produk.index');
+        return redirect('/produk');
     }
 }

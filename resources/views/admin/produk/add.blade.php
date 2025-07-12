@@ -10,7 +10,7 @@
 
 <body>
     <h1>Tambah Produk</h1>
-    <form action="{{ route('produk.store') }}" method="post">
+    <form action="/produk" method="post">
         @csrf
         <input type="text" name="nama" placeholder="Nama Produk">
         <input type="text" name="harga" placeholder="Harga Produk">
